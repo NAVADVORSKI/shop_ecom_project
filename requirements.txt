@@ -1,0 +1,6 @@
+pandas
+pymongo
+dbt-postgres
+psycopg2
+dotenv
+logging
