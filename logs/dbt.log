@@ -395,3 +395,371 @@ Parsing Error
 [0m17:38:37.660773 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000181138629E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001811391C4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000181138DCD10>]}
 [0m17:38:37.661048 [debug] [MainThread]: Flushing usage events
 [0m17:38:38.327412 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:47:04.822112 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027EA2505400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027E9F10D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027EA45BBC50>]}
+
+
+============================== 21:47:04.827680 | 007bdb9b-283e-490a-851e-e902da8f1fee ==============================
+[0m21:47:04.827680 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m21:47:04.828259 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m21:47:04.846671 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m21:47:04.847223 [info ] [MainThread]: python version: 3.13.7
+[0m21:47:04.847607 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m21:47:04.847955 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m21:47:04.851809 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m21:47:04.852612 [debug] [MainThread]: Command `dbt debug` failed at 21:47:04.852490 after 0.14 seconds
+[0m21:47:04.852932 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027EA46029E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027EA46BC4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027EA4680D10>]}
+[0m21:47:04.853190 [debug] [MainThread]: Flushing usage events
+[0m21:47:05.572874 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:58:14.493386 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96A755400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E9672ED1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96C807C50>]}
+
+
+============================== 21:58:14.496795 | f2a598b3-c7b9-4043-8fb2-8dab2e317973 ==============================
+[0m21:58:14.496795 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m21:58:14.497394 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt debug', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m21:58:14.509469 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m21:58:14.509908 [info ] [MainThread]: python version: 3.13.7
+[0m21:58:14.510316 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m21:58:14.510682 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m21:58:14.516115 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m21:58:14.517310 [debug] [MainThread]: Command `dbt debug` failed at 21:58:14.517161 after 0.15 seconds
+[0m21:58:14.517673 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96C8529E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96C90C4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E96C8D0D10>]}
+[0m21:58:14.518064 [debug] [MainThread]: Flushing usage events
+[0m21:58:15.221271 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:58:17.708589 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000179459D5400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000179425FD1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017947A8BC50>]}
+
+
+============================== 21:58:17.711916 | 99ed1173-54be-4572-b849-fd95f1cc539e ==============================
+[0m21:58:17.711916 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m21:58:17.712470 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m21:58:17.730521 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m21:58:17.731246 [info ] [MainThread]: python version: 3.13.7
+[0m21:58:17.731626 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m21:58:17.732031 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m21:58:17.735480 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m21:58:17.736219 [debug] [MainThread]: Command `dbt debug` failed at 21:58:17.736102 after 0.11 seconds
+[0m21:58:17.736538 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017947ACE9E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017947B8C4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017947B50D10>]}
+[0m21:58:17.736881 [debug] [MainThread]: Flushing usage events
+[0m21:58:18.397732 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:03:05.971497 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E758E85400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E755A4D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E75AF4BC50>]}
+
+
+============================== 22:03:05.974715 | 47d3f3fe-70c7-47e7-8ba3-3ed2eb6cda6e ==============================
+[0m22:03:05.974715 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:03:05.975224 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:03:05.987344 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:03:05.987698 [info ] [MainThread]: python version: 3.13.7
+[0m22:03:05.988052 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:03:05.988503 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:03:05.992107 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m22:03:05.993082 [debug] [MainThread]: Command `dbt debug` failed at 22:03:05.992933 after 0.12 seconds
+[0m22:03:05.993443 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E75AF929E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E75B04C4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E75B00CD10>]}
+[0m22:03:05.993731 [debug] [MainThread]: Flushing usage events
+[0m22:03:06.708408 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:03:09.575306 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A2B9BF5400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A2B679D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A2BBCABC50>]}
+
+
+============================== 22:03:09.578912 | 3315b9fe-7e8b-4060-b43f-5806bc2e02c3 ==============================
+[0m22:03:09.578912 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:03:09.579475 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:03:09.594669 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:03:09.595513 [info ] [MainThread]: python version: 3.13.7
+[0m22:03:09.595880 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:03:09.596168 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:03:09.601340 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m22:03:09.602306 [debug] [MainThread]: Command `dbt debug` failed at 22:03:09.602183 after 0.11 seconds
+[0m22:03:09.602612 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A2BBCF29E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A2BBDAC4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A2BBD70D10>]}
+[0m22:03:09.602985 [debug] [MainThread]: Flushing usage events
+[0m22:03:10.260869 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:10:58.160487 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000138874B5400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000138840AD1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013889567C50>]}
+
+
+============================== 22:10:58.163817 | 7d5577a2-ac66-46f7-973d-c94e7f701be9 ==============================
+[0m22:10:58.163817 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:10:58.164319 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:10:58.176799 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:10:58.177201 [info ] [MainThread]: python version: 3.13.7
+[0m22:10:58.177527 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:10:58.177835 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:10:58.180850 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m22:10:58.181423 [debug] [MainThread]: Command `dbt debug` failed at 22:10:58.181345 after 0.12 seconds
+[0m22:10:58.181639 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000138895B29E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001388966C4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013889630D10>]}
+[0m22:10:58.181926 [debug] [MainThread]: Flushing usage events
+[0m22:10:58.912010 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:13:30.231567 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002BA1BFC5400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002BA18BFD1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002BA1E077C50>]}
+
+
+============================== 22:13:30.234860 | 78c65c03-2902-465d-846e-c74b2b80f204 ==============================
+[0m22:13:30.234860 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:13:30.235371 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:13:30.247781 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:13:30.248121 [info ] [MainThread]: python version: 3.13.7
+[0m22:13:30.248560 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:13:30.248963 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:13:30.252615 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m22:13:30.253475 [debug] [MainThread]: Command `dbt debug` failed at 22:13:30.253347 after 0.12 seconds
+[0m22:13:30.253830 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002BA1E0C29E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002BA1E17C4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002BA1E140D10>]}
+[0m22:13:30.254218 [debug] [MainThread]: Flushing usage events
+[0m22:13:30.978398 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:13:50.890966 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029BE5D95400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029BE293D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029BE7E47C50>]}
+
+
+============================== 22:13:50.894265 | 0ec3935d-53a5-4c8e-99d2-4fec6bdc8698 ==============================
+[0m22:13:50.894265 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:13:50.894776 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:13:50.906813 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:13:50.907154 [info ] [MainThread]: python version: 3.13.7
+[0m22:13:50.907513 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:13:50.907908 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:13:50.911543 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m22:13:50.912414 [debug] [MainThread]: Command `dbt debug` failed at 22:13:50.912309 after 0.10 seconds
+[0m22:13:50.913921 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029BE7E929E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029BE7F4C4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029BE7F10D10>]}
+[0m22:13:50.914520 [debug] [MainThread]: Flushing usage events
+[0m22:13:51.555602 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:14:28.923897 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AD68145400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AD64CED1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AD6A1F7C50>]}
+
+
+============================== 22:14:28.927257 | bc2a61b6-8e0f-4b1b-9dd4-1d6d0a7cd8c0 ==============================
+[0m22:14:28.927257 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:14:28.927821 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:14:28.939841 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:14:28.940184 [info ] [MainThread]: python version: 3.13.7
+[0m22:14:28.940522 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:14:28.940838 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:14:28.944489 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'PSQL_DB_NAME'
+[0m22:14:28.945416 [debug] [MainThread]: Command `dbt debug` failed at 22:14:28.945312 after 0.11 seconds
+[0m22:14:28.946250 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AD6A2429E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AD6A2FC4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AD6A2BCD10>]}
+[0m22:14:28.947564 [debug] [MainThread]: Flushing usage events
+[0m22:14:29.623894 [debug] [MainThread]: An error was encountered while trying to flush usage events
+{"data":{"log_version":3,"version":"=2.0.0-preview.175"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019e5643-ebdb-7c91-bb1d-6f361dbe5993","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.175","name":"MainReportVersion","pid":15456,"thread":"tokio-rt-worker","ts":"2026-05-23T19:15:52.412983Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\Honor\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","profiles_dir":"C:\\Users\\Honor\\Documents\\shop_ecom\\dbt_project","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019e5643-ebdb-7c91-bb1d-6f361dbe5993","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"profiles_dir\":\"C:\\\\Users\\\\Honor\\\\Documents\\\\shop_ecom\\\\dbt_project\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false}","name":"MainReportArgs","pid":15456,"thread":"tokio-rt-worker","ts":"2026-05-23T19:15:52.413003Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019e5643-ebdb-7c91-bb1d-6f361dbe5993","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":15456,"thread":"tokio-rt-worker","ts":"2026-05-23T19:15:52.416503Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019e5643-ebdb-7c91-bb1d-6f361dbe5993","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":15456,"thread":"tokio-rt-worker","ts":"2026-05-23T19:15:52.416962Z"}}
+{"data":{"completed_at":"2026-05-23T19:15:52.565208Z","elapsed":0.15239299833774567,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019e5643-ebdb-7c91-bb1d-6f361dbe5993","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [152ms]","name":"CommandCompleted","pid":15456,"thread":"tokio-rt-worker","ts":"2026-05-23T19:15:52.565389Z"}}
+[0m22:15:55.766841 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BC9DF15400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BC9AB1D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BC9FFCBC50>]}
+
+
+============================== 22:15:55.772286 | 078f68e5-9314-4e4c-aaff-30d0a92eee6c ==============================
+[0m22:15:55.772286 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:15:55.772904 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\dbt_project', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:15:55.788640 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:15:55.789158 [info ] [MainThread]: python version: 3.13.7
+[0m22:15:55.789579 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:15:55.789932 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:15:55.791161 [info ] [MainThread]: Using profiles dir at C:\Users\Honor\Documents\shop_ecom\dbt_project
+[0m22:15:55.792071 [info ] [MainThread]: Using profiles.yml file at C:\Users\Honor\Documents\shop_ecom\dbt_project\profiles.yml
+[0m22:15:55.792300 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Honor\Documents\shop_ecom\dbt_project.yml
+[0m22:15:55.792549 [info ] [MainThread]: Configuration:
+[0m22:15:55.792792 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m22:15:55.793080 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m22:15:55.793308 [info ] [MainThread]: Required dependencies:
+[0m22:15:55.793640 [debug] [MainThread]: Executing "git --help"
+[0m22:15:55.820184 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:15:55.820567 [debug] [MainThread]: STDERR: "b''"
+[0m22:15:55.820826 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:15:55.821130 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m22:15:55.821423 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m22:15:55.821649 [info ] [MainThread]: dbt looked for a profiles.yml file in C:\Users\Honor\Documents\shop_ecom\dbt_project\profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m22:15:55.821860 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\Honor\Documents\shop_ecom\dbt_project.yml> not found
+
+[0m22:15:55.822420 [debug] [MainThread]: Command `dbt debug` failed at 22:15:55.822344 after 0.17 seconds
+[0m22:15:55.822663 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA0012060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BC9EE8B530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA0006360>]}
+[0m22:15:55.822918 [debug] [MainThread]: Flushing usage events
+[0m22:15:56.564733 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:16:10.297832 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025758D65400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002575591D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002575AE17C50>]}
+
+
+============================== 22:16:10.301332 | b75efe0a-f20d-45e6-8cf1-bdba79edaa7c ==============================
+[0m22:16:10.301332 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:16:10.301816 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\dbt_project', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:16:10.318334 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:16:10.318748 [info ] [MainThread]: python version: 3.13.7
+[0m22:16:10.320583 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:16:10.320829 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:16:10.321138 [info ] [MainThread]: Using profiles dir at C:\Users\Honor\Documents\shop_ecom\dbt_project
+[0m22:16:10.321418 [info ] [MainThread]: Using profiles.yml file at C:\Users\Honor\Documents\shop_ecom\dbt_project\profiles.yml
+[0m22:16:10.321681 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Honor\Documents\shop_ecom\dbt_project.yml
+[0m22:16:10.321956 [info ] [MainThread]: Configuration:
+[0m22:16:10.322213 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m22:16:10.322478 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m22:16:10.322732 [info ] [MainThread]: Required dependencies:
+[0m22:16:10.323017 [debug] [MainThread]: Executing "git --help"
+[0m22:16:10.351512 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:16:10.351950 [debug] [MainThread]: STDERR: "b''"
+[0m22:16:10.352229 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:16:10.352504 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m22:16:10.352802 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m22:16:10.353034 [info ] [MainThread]: dbt looked for a profiles.yml file in C:\Users\Honor\Documents\shop_ecom\dbt_project\profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m22:16:10.353249 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\Honor\Documents\shop_ecom\dbt_project.yml> not found
+
+[0m22:16:10.353796 [debug] [MainThread]: Command `dbt debug` failed at 22:16:10.353719 after 0.16 seconds
+[0m22:16:10.354042 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002575AE62060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025759CDB530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002575AE56360>]}
+[0m22:16:10.354298 [debug] [MainThread]: Flushing usage events
+[0m22:16:11.019830 [debug] [MainThread]: An error was encountered while trying to flush usage events
+{"data":{"log_version":3,"version":"=2.0.0-preview.175"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019e5647-43f8-7403-a985-c131c35c8fa7","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.175","name":"MainReportVersion","pid":19644,"thread":"tokio-rt-worker","ts":"2026-05-23T19:19:31.578532Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\Honor\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","profiles_dir":"C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019e5647-43f8-7403-a985-c131c35c8fa7","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"profiles_dir\":\"C:\\\\Users\\\\Honor\\\\Documents\\\\shop_ecom\\\\shop_ecom_dbt\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false}","name":"MainReportArgs","pid":19644,"thread":"tokio-rt-worker","ts":"2026-05-23T19:19:31.578559Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019e5647-43f8-7403-a985-c131c35c8fa7","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":19644,"thread":"tokio-rt-worker","ts":"2026-05-23T19:19:31.581707Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019e5647-43f8-7403-a985-c131c35c8fa7","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":19644,"thread":"tokio-rt-worker","ts":"2026-05-23T19:19:31.582121Z"}}
+{"data":{"completed_at":"2026-05-23T19:19:31.793729Z","elapsed":0.21539320051670074,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019e5647-43f8-7403-a985-c131c35c8fa7","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [215ms]","name":"CommandCompleted","pid":19644,"thread":"tokio-rt-worker","ts":"2026-05-23T19:19:31.793854Z"}}
+[0m22:19:36.073639 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017FB8F65400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017FB5B6D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017FBB02BC50>]}
+
+
+============================== 22:19:36.077254 | 5958e387-398d-4265-a7d1-dff2d54d468b ==============================
+[0m22:19:36.077254 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:19:36.077838 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'invocation_command': 'dbt debug', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:19:36.091841 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:19:36.092356 [info ] [MainThread]: python version: 3.13.7
+[0m22:19:36.092755 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:19:36.093235 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:19:36.261764 [info ] [MainThread]: Using profiles dir at C:\Users\Honor\Documents\shop_ecom\shop_ecom_dbt
+[0m22:19:36.262504 [info ] [MainThread]: Using profiles.yml file at C:\Users\Honor\Documents\shop_ecom\shop_ecom_dbt\profiles.yml
+[0m22:19:36.262960 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Honor\Documents\shop_ecom\dbt_project.yml
+[0m22:19:36.263438 [info ] [MainThread]: Configuration:
+[0m22:19:36.263716 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m22:19:36.263975 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m22:19:36.264253 [info ] [MainThread]: Required dependencies:
+[0m22:19:36.264580 [debug] [MainThread]: Executing "git --help"
+[0m22:19:36.293596 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:19:36.294023 [debug] [MainThread]: STDERR: "b''"
+[0m22:19:36.294298 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:19:36.294609 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m22:19:36.295001 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m22:19:36.295304 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "shop_ecom_dbt", target "dev" invalid: '5432' is not of type 'integer'
+
+
+[0m22:19:36.295536 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\Honor\Documents\shop_ecom\dbt_project.yml> not found
+
+[0m22:19:36.296102 [debug] [MainThread]: Command `dbt debug` failed at 22:19:36.296020 after 0.34 seconds
+[0m22:19:36.296344 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017FBB1B9220>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017FBB12F1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017FBB0EE9C0>]}
+[0m22:19:36.296597 [debug] [MainThread]: Flushing usage events
+[0m22:19:36.997509 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m22:26:38.249972 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001406A055400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000014066C0D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001406C10BC50>]}
+
+
+============================== 22:26:38.253251 | 6da5d3bf-9c42-41c8-9531-25da62ee4124 ==============================
+[0m22:26:38.253251 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:26:38.253757 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:26:38.265852 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m22:26:38.266193 [info ] [MainThread]: python version: 3.13.7
+[0m22:26:38.266621 [info ] [MainThread]: python path: C:\Users\Honor\Documents\shop_ecom\venv\Scripts\python.exe
+[0m22:26:38.267035 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m22:26:38.305318 [info ] [MainThread]: Using profiles dir at C:\Users\Honor\Documents\shop_ecom\shop_ecom_dbt
+[0m22:26:38.306160 [info ] [MainThread]: Using profiles.yml file at C:\Users\Honor\Documents\shop_ecom\shop_ecom_dbt\profiles.yml
+[0m22:26:38.306603 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Honor\Documents\shop_ecom\dbt_project.yml
+[0m22:26:38.307115 [info ] [MainThread]: Configuration:
+[0m22:26:38.307471 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m22:26:38.307717 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m22:26:38.307931 [info ] [MainThread]: Required dependencies:
+[0m22:26:38.308199 [debug] [MainThread]: Executing "git --help"
+[0m22:26:38.337835 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m22:26:38.338215 [debug] [MainThread]: STDERR: "b''"
+[0m22:26:38.338482 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m22:26:38.338762 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m22:26:38.339043 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m22:26:38.339259 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "shop_ecom_dbt", target "dev" invalid: '5432' is not of type 'integer'
+
+
+[0m22:26:38.339462 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\Honor\Documents\shop_ecom\dbt_project.yml> not found
+
+[0m22:26:38.340007 [debug] [MainThread]: Command `dbt debug` failed at 22:26:38.339931 after 0.18 seconds
+[0m22:26:38.340251 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001406C299220>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001406C20F1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001406C1D29C0>]}
+[0m22:26:38.340539 [debug] [MainThread]: Flushing usage events
+[0m22:26:39.022043 [debug] [MainThread]: An error was encountered while trying to flush usage events
+{"data":{"log_version":3,"version":"=2.0.0-preview.175"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019e590e-7a7c-7643-9978-4e76f907770c","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.175","name":"MainReportVersion","pid":15044,"thread":"tokio-rt-worker","ts":"2026-05-24T08:16:21.658303Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\Honor\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","profiles_dir":"C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019e590e-7a7c-7643-9978-4e76f907770c","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"profiles_dir\":\"C:\\\\Users\\\\Honor\\\\Documents\\\\shop_ecom\\\\shop_ecom_dbt\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false}","name":"MainReportArgs","pid":15044,"thread":"tokio-rt-worker","ts":"2026-05-24T08:16:21.658611Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019e590e-7a7c-7643-9978-4e76f907770c","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":15044,"thread":"tokio-rt-worker","ts":"2026-05-24T08:16:21.666894Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019e590e-7a7c-7643-9978-4e76f907770c","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":15044,"thread":"tokio-rt-worker","ts":"2026-05-24T08:16:21.668370Z"}}
+{"data":{"completed_at":"2026-05-24T08:16:21.947690Z","elapsed":0.2916489839553833,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019e590e-7a7c-7643-9978-4e76f907770c","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [291ms]","name":"CommandCompleted","pid":15044,"thread":"tokio-rt-worker","ts":"2026-05-24T08:16:21.950014Z"}}
+{"data":{"log_version":3,"version":"=2.0.0-preview.175"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019e596a-a67f-7432-8981-4962de664da8","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.175","name":"MainReportVersion","pid":23292,"thread":"tokio-rt-worker","ts":"2026-05-24T09:57:02.210155Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\Honor\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","profiles_dir":"C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019e596a-a67f-7432-8981-4962de664da8","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"profiles_dir\":\"C:\\\\Users\\\\Honor\\\\Documents\\\\shop_ecom\\\\shop_ecom_dbt\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false}","name":"MainReportArgs","pid":23292,"thread":"tokio-rt-worker","ts":"2026-05-24T09:57:02.210182Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019e596a-a67f-7432-8981-4962de664da8","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":23292,"thread":"tokio-rt-worker","ts":"2026-05-24T09:57:02.214214Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019e596a-a67f-7432-8981-4962de664da8","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":23292,"thread":"tokio-rt-worker","ts":"2026-05-24T09:57:02.214879Z"}}
+{"data":{"completed_at":"2026-05-24T09:57:02.377493Z","elapsed":0.16749189794063568,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019e596a-a67f-7432-8981-4962de664da8","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [167ms]","name":"CommandCompleted","pid":23292,"thread":"tokio-rt-worker","ts":"2026-05-24T09:57:02.377637Z"}}
+{"data":{"log_version":3,"version":"=2.0.0-preview.175"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019e596d-6f0e-7652-a3d3-07eb43e2d366","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.175","name":"MainReportVersion","pid":21984,"thread":"tokio-rt-worker","ts":"2026-05-24T10:00:04.627826Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\Honor\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","profiles_dir":"C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019e596d-6f0e-7652-a3d3-07eb43e2d366","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"profiles_dir\":\"C:\\\\Users\\\\Honor\\\\Documents\\\\shop_ecom\\\\shop_ecom_dbt\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false}","name":"MainReportArgs","pid":21984,"thread":"tokio-rt-worker","ts":"2026-05-24T10:00:04.627845Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019e596d-6f0e-7652-a3d3-07eb43e2d366","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":21984,"thread":"tokio-rt-worker","ts":"2026-05-24T10:00:04.691023Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019e596d-6f0e-7652-a3d3-07eb43e2d366","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":21984,"thread":"tokio-rt-worker","ts":"2026-05-24T10:00:04.691464Z"}}
+{"data":{"completed_at":"2026-05-24T10:00:04.909290Z","elapsed":0.2816374897956848,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019e596d-6f0e-7652-a3d3-07eb43e2d366","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [281ms]","name":"CommandCompleted","pid":21984,"thread":"tokio-rt-worker","ts":"2026-05-24T10:00:04.909409Z"}}
+[0m13:16:16.898767 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000255110E5400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002550DCBD1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000255131FFB10>]}
+
+
+============================== 13:16:16.903670 | a64d2314-f872-4571-ab68-cc3f83a8d39a ==============================
+[0m13:16:16.903670 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m13:16:16.904192 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'invocation_command': 'dbt docs generate', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m13:16:16.904677 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\Honor\Documents\shop_ecom\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:16:16.905328 [debug] [MainThread]: Command `dbt docs generate` failed at 13:16:16.905248 after 0.10 seconds
+[0m13:16:16.905551 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025513229F30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000255131AF530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000255131E39B0>]}
+[0m13:16:16.905770 [debug] [MainThread]: Flushing usage events
+[0m13:16:17.682568 [debug] [MainThread]: An error was encountered while trying to flush usage events
+{"data":{"log_version":3,"version":"=2.0.0-preview.176"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019e5b3f-360e-73e3-9968-5165bc8185ac","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.176","name":"MainReportVersion","pid":23252,"thread":"tokio-rt-worker","ts":"2026-05-24T18:28:49.809438Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\Honor\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","profiles_dir":"C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019e5b3f-360e-73e3-9968-5165bc8185ac","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"profiles_dir\":\"C:\\\\Users\\\\Honor\\\\Documents\\\\shop_ecom\\\\shop_ecom_dbt\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false}","name":"MainReportArgs","pid":23252,"thread":"tokio-rt-worker","ts":"2026-05-24T18:28:49.809456Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019e5b3f-360e-73e3-9968-5165bc8185ac","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":23252,"thread":"tokio-rt-worker","ts":"2026-05-24T18:28:49.812983Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019e5b3f-360e-73e3-9968-5165bc8185ac","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":23252,"thread":"tokio-rt-worker","ts":"2026-05-24T18:28:49.813453Z"}}
+{"data":{"completed_at":"2026-05-24T18:28:49.962895Z","elapsed":0.15363261103630066,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019e5b3f-360e-73e3-9968-5165bc8185ac","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [153ms]","name":"CommandCompleted","pid":23252,"thread":"tokio-rt-worker","ts":"2026-05-24T18:28:49.963028Z"}}
+{"data":{"log_version":3,"version":"=2.0.0-preview.176"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019e5b47-f2bc-78b2-8a3f-bd08e57e0f22","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.176","name":"MainReportVersion","pid":10784,"thread":"tokio-rt-worker","ts":"2026-05-24T18:38:22.397884Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\Honor\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","profiles_dir":"C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019e5b47-f2bc-78b2-8a3f-bd08e57e0f22","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"profiles_dir\":\"C:\\\\Users\\\\Honor\\\\Documents\\\\shop_ecom\\\\shop_ecom_dbt\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false}","name":"MainReportArgs","pid":10784,"thread":"tokio-rt-worker","ts":"2026-05-24T18:38:22.397898Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019e5b47-f2bc-78b2-8a3f-bd08e57e0f22","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":10784,"thread":"tokio-rt-worker","ts":"2026-05-24T18:38:22.401585Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019e5b47-f2bc-78b2-8a3f-bd08e57e0f22","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":10784,"thread":"tokio-rt-worker","ts":"2026-05-24T18:38:22.402042Z"}}
+{"data":{"completed_at":"2026-05-24T18:38:22.558490Z","elapsed":0.16072489321231842,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019e5b47-f2bc-78b2-8a3f-bd08e57e0f22","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [160ms]","name":"CommandCompleted","pid":10784,"thread":"tokio-rt-worker","ts":"2026-05-24T18:38:22.558629Z"}}
+[0m22:24:23.924217 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000292FC915400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000292F959D1D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000292FEA1FB10>]}
+
+
+============================== 22:24:23.927757 | c203af07-0778-47e8-aa47-53dd3c4b5162 ==============================
+[0m22:24:23.927757 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m22:24:23.928289 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Honor\\Documents\\shop_ecom\\shop_ecom_dbt', 'use_colors': 'True', 'invocation_command': 'dbt docs generate', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m22:24:23.928729 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\Honor\Documents\shop_ecom\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m22:24:23.929375 [debug] [MainThread]: Command `dbt docs generate` failed at 22:24:23.929297 after 0.10 seconds
+[0m22:24:23.929595 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000292FEA45F30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000292FE9CF530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000292FEA039B0>]}
+[0m22:24:23.929806 [debug] [MainThread]: Flushing usage events
+[0m22:24:24.643464 [debug] [MainThread]: An error was encountered while trying to flush usage events

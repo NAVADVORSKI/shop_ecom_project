@@ -31,7 +31,6 @@ loader = MongoToPostgresLoader(
 )
 
 try:
-    # === ВАРИАНТ 1: Полная информация о загрузке ===
     load_info = loader.get_last_load_info()
     
     print(f"Последняя загрузка: {load_info['last_load_ts']}")
@@ -40,19 +39,16 @@ try:
     for table, info in load_info['tables'].items():
         print(f"  {table}: {info['row_count']} строк, обновлена {info['last_update']}")
     
-    # === ВАРИАНТ 2: Только временная метка ===
     last_ts = loader.get_last_load_timestamp()
     
     if last_ts:
         print(f"\nМожно делать инкрементальную загрузку с {last_ts}")
         
-        # Делаем инкрементальную загрузку
         results = loader.load_all_collections(last_loaded_ts=last_ts)
     else:
         print("\nБаза пуста, нужна полная загрузка")
         results = loader.load_all_collections(force_full_load=True)
     
-    # === ВАРИАНТ 3: Красивый отчёт ===
     loader.print_load_status()
         
 finally:

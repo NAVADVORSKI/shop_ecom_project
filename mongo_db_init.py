@@ -2,10 +2,15 @@ import pymongo
 import random
 from datetime import date, timedelta
 from bson import ObjectId
+from dotenv import load_dotenv
+import os
 
+mongo_uri = os.getenv('MONGO_URI')
+mongo_db_name = os.getenv('MONGO_DB_NAME')
 # Подключение
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["electronics_db"]
+client = pymongo.MongoClient(mongo_uri)
+db = client[mongo_db_name]
+
 
 # Очистка всех коллекций
 for coll_name in db.list_collection_names():

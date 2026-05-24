@@ -1,0 +1,197 @@
+version: 2
+
+models:
+  # =============================================================================
+  # 1. ЗАКАЗЫ КЛИЕНТОВ
+  # =============================================================================
+  - name: fct_customer_orders
+    description: >
+      Таблица фактов заказов клиентов в разрезе позиций (строк документа).
+      Построена на int_customer_orders с джойнами к измерениям: организации,
+      контрагенты, склады и номенклатура. Содержит денормализованные
+      наименования вместо суррогатных ключей. Инкрементальная загрузка
+      (append) с уникальным ключом order_number.
+    columns:
+      - name: order_number
+        description: "Номер заказа в формате ЗК-YYMMDD-NNN"
+        tests:
+          - not_null
+
+      - name: order_date
+        description: "Дата оформления заказа"
+        tests:
+          - not_null
+
+      - name: organization_name
+        description: "Наименование организации-продавца"
+        tests:
+          - not_null
+
+      - name: counterparty_name
+        description: "Наименование контрагента (клиента)"
+        tests:
+          - not_null
+
+      - name: counterparty_type
+        description: "Тип контрагента: client (клиент), supplier (поставщик), both (смешанный)"
+        tests:
+          - accepted_values:
+              values: ['client', 'supplier', 'both']
+
+      - name: warehouse_name
+        description: "Название склада отгрузки"
+        tests:
+          - not_null
+
+      - name: status
+        description: "Статус заказа (по умолчанию 'completed')"
+
+      - name: price
+        description: "Цена единицы товара в позиции заказа"
+
+      - name: amount
+        description: "Сумма по позиции заказа"
+
+      - name: quantity
+        description: "Количество товара в позиции заказа"
+
+      - name: base_unit
+        description: "Базовая единица измерения товара (по умолчанию 'шт')"
+
+      - name: email_address
+        description: "Доменная часть email-адреса контрагента (после символа @)"
+
+      - name: nomenclature_name
+        description: "Полное наименование товара в позиции заказа"
+
+      - name: parent_category_name
+        description: "Название родительской (корневой) категории товара"
+
+      - name: sub_category_name
+        description: "Название подкатегории товара"
+
+  # =============================================================================
+  # 2. ПРОДАЖИ
+  # =============================================================================
+  - name: fct_sales
+    description: >
+      Таблица фактов продаж в разрезе позиций (строк документа).
+      Построена на int_sales с джойнами к измерениям: организации,
+      контрагенты, склады и номенклатура. Содержит показатели продажи
+      (количество, сумма, себестоимость) и денормализованные атрибуты
+      измерений. Инкрементальная загрузка (append) с уникальным ключом sale_number.
+    columns:
+      - name: sale_number
+        description: "Номер документа продажи в формате РТ-YYMMDD-NNN"
+        tests:
+          - not_null
+
+      - name: sale_date
+        description: "Дата продажи"
+        tests:
+          - not_null
+
+      - name: organization_name
+        description: "Наименование организации-продавца"
+        tests:
+          - not_null
+
+      - name: counterparty_name
+        description: "Наименование контрагента (покупателя)"
+        tests:
+          - not_null
+
+      - name: counterparty_type
+        description: "Тип контрагента: client (клиент), supplier (поставщик), both (смешанный)"
+        tests:
+          - accepted_values:
+              values: ['client', 'supplier', 'both']
+
+      - name: warehouse_name
+        description: "Название склада, с которого произведена отгрузка"
+        tests:
+          - not_null
+
+      - name: cost_price
+        description: "Себестоимость единицы товара"
+
+      - name: sale_amount
+        description: "Сумма продажи по позиции"
+
+      - name: sale_quantity
+        description: "Количество проданного товара"
+
+      - name: base_unit
+        description: "Базовая единица измерения товара (по умолчанию 'шт')"
+
+      - name: nomenclature_name
+        description: "Полное наименование проданного товара"
+
+      - name: parent_category_name
+        description: "Название родительской (корневой) категории товара"
+
+      - name: sub_category_name
+        description: "Название подкатегории товара"
+
+  # =============================================================================
+  # 3. ЗАКУПКИ
+  # =============================================================================
+  - name: fct_purchases
+    description: >
+      Таблица фактов закупок в разрезе позиций (строк документа).
+      Построена на int_purchases с джойнами к измерениям: организации,
+      контрагенты, склады и номенклатура. Содержит закупочную цену,
+      количество и сумму по позиции с денормализованными атрибутами
+      измерений. Инкрементальная загрузка (append) с уникальным ключом purchase_number.
+    columns:
+      - name: purchase_number
+        description: "Номер документа закупки в формате ПТ-YYMMDD-NNN"
+        tests:
+          - not_null
+
+      - name: purchase_date
+        description: "Дата закупки"
+        tests:
+          - not_null
+
+      - name: organization_name
+        description: "Наименование организации-покупателя"
+        tests:
+          - not_null
+
+      - name: counterparty_name
+        description: "Наименование контрагента (поставщика)"
+        tests:
+          - not_null
+
+      - name: counterparty_type
+        description: "Тип контрагента: client (клиент), supplier (поставщик), both (смешанный)"
+        tests:
+          - accepted_values:
+              values: ['client', 'supplier', 'both']
+
+      - name: warehouse_name
+        description: "Название склада приёмки"
+        tests:
+          - not_null
+
+      - name: price
+        description: "Закупочная цена единицы товара"
+
+      - name: amount
+        description: "Сумма по позиции закупки"
+
+      - name: quantity
+        description: "Количество закупленного товара"
+
+      - name: base_unit
+        description: "Базовая единица измерения товара (по умолчанию 'шт')"
+
+      - name: nomenclature_name
+        description: "Полное наименование закупленного товара"
+
+      - name: parent_category_name
+        description: "Название родительской (корневой) категории товара"
+
+      - name: sub_category_name
+        description: "Название подкатегории товара"

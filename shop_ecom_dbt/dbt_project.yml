@@ -31,5 +31,23 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   shop_ecom_dbt:
     # Config indicated by + and applies to all files under models/example/
-    example:
+    stg:
+      +materialized: table
+      +schema: 'stg'
+      +tags: ['stg']
+      +enabled: true
+    int:
       +materialized: view
+      +schema: 'int'
+      +tags: ['int']
+      +enabled: true
+    fct:
+      +materialized: table
+      +schema: 'fct'
+      +tags: ['fct']
+      +enabled: true
+    dim:
+      +materialized: table
+      +schema: 'dim'
+      +tags: ['dim']
+      +enabled: true

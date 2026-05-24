@@ -1,0 +1,158 @@
+version: 2
+
+models:
+  # =============================================================================
+  # 1. ОРГАНИЗАЦИИ
+  # =============================================================================
+  - name: dim_organizations
+    description: >
+      Измерение организаций. Справочник содержит нашу компанию и внешние
+      организации — партнёров и поставщиков. Построено на staging-слое,
+      поля приведены к единому формату (organization_id, organization_name,
+      organization_inn).
+    columns:
+      - name: organization_id
+        description: "Уникальный идентификатор организации (ObjectId из MongoDB)"
+        tests:
+          - unique
+          - not_null
+
+      - name: organization_name
+        description: "Наименование организации"
+        tests:
+          - not_null
+
+      - name: organization_inn
+        description: "ИНН организации (10 или 12 цифр). Может быть NULL для внешних партнёров"
+
+  # =============================================================================
+  # 2. СКЛАДЫ
+  # =============================================================================
+  - name: dim_warehouses
+    description: >
+      Измерение складов и пунктов выдачи. Включает основной склад,
+      склады маркетплейсов (Ozon, Wildberries) и пункт выдачи заказов.
+      Используется как справочник для джойнов с таблицами фактов.
+    columns:
+      - name: warehouse_id
+        description: "Уникальный идентификатор склада (ObjectId из MongoDB)"
+        tests:
+          - unique
+          - not_null
+
+      - name: warehouse_name
+        description: "Название склада (Основной склад, Склад Ozon, и т.д.)"
+        tests:
+          - not_null
+
+  # =============================================================================
+  # 3. НОМЕНКЛАТУРА (ТОВАРЫ)
+  # =============================================================================
+  - name: dim_nomenclature
+    description: >
+      Измерение номенклатуры (товаров) с обогащением категориями.
+      Соединяет товары с подкатегориями и родительскими категориями из
+      product_categories. Для корневых категорий parent_category_name
+      совпадает с sub_category_name.
+    columns:
+      - name: nomenclature_id
+        description: "Уникальный идентификатор товара (ObjectId из MongoDB)"
+        tests:
+          - unique
+          - not_null
+
+      - name: article
+        description: "Артикул товара (SM-001 для смартфонов, NB-001 для ноутбуков, и т.д.)"
+        tests:
+          - unique
+          - not_null
+
+      - name: nomenclature_name
+        description: "Полное наименование товара (модель, характеристики)"
+        tests:
+          - not_null
+
+      - name: parent_category_name
+        description: >
+          Название родительской (корневой) категории. Для товаров в корневой
+          категории без родителя подставляется sub_category_name
+
+      - name: sub_category_name
+        description: "Название непосредственной категории товара (подкатегория)"
+
+      - name: base_unit
+        description: "Базовая единица измерения (по умолчанию 'шт')"
+
+      - name: nomenclature_vat_rate
+        description: "Ставка НДС в процентах (по умолчанию 20%)"
+
+  # =============================================================================
+  # 4. ЦЕНЫ
+  # =============================================================================
+  - name: dim_prices
+    description: >
+      Измерение цен товаров с денормализацией справочников. Объединяет
+      prices, price_types и номенклатуру с категориями. Для каждого товара
+      доступны все типы цен (Закупочная, Розничная, Оптовая) с категориями
+      и валютой.
+    columns:
+      - name: nomenclature_name
+        description: "Полное наименование товара"
+        tests:
+          - not_null
+
+      - name: parent_category_name
+        description: "Название родительской (корневой) категории товара"
+
+      - name: sub_category_name
+        description: "Название подкатегории товара"
+
+      - name: price_type_name
+        description: "Название типа цены (Закупочная, Розничная, Оптовая)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Закупочная', 'Розничная', 'Оптовая']
+
+      - name: currency
+        description: "Валюта цены (по умолчанию RUB)"
+
+      - name: price
+        description: "Значение цены в рублях"
+        tests:
+          - not_null
+
+      - name: price_valid_from
+        description: "Дата начала действия цены"
+        tests:
+          - not_null
+
+  # =============================================================================
+  # 5. КОНТРАГЕНТЫ
+  # =============================================================================
+  - name: dim_counterparties
+    description: >
+      Измерение контрагентов. Справочник клиентов, поставщиков и смешанных
+      контрагентов. Из email извлекается доменная часть (после символа @)
+      в атрибут email_address.
+    columns:
+      - name: counterparty_id
+        description: "Уникальный идентификатор контрагента (ObjectId из MongoDB)"
+        tests:
+          - unique
+          - not_null
+
+      - name: counterparty_name
+        description: "Наименование контрагента (ФИО или название организации)"
+        tests:
+          - not_null
+
+      - name: counterparty_type
+        description: "Тип контрагента: client (клиент), supplier (поставщик), both (смешанный)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['client', 'supplier', 'both']
+
+      - name: email_address
+        description: "Доменная часть email-адреса (после символа @)"

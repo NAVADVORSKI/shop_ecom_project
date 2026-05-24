@@ -1,0 +1,572 @@
+version: 2
+
+sources:
+  - name: staging_shop_ecom
+    description: "Сырые данные из MongoDB, загруженные в PostgreSQL через ETL-пайплайн"
+    schema: stg
+    
+    tables:
+      # =============================================================================
+      # 1. ОРГАНИЗАЦИИ
+      # =============================================================================
+      - name: organizations
+        description: >
+          Справочник организаций. Содержит как нашу компанию (is_our_org = true),
+          так и внешние организации — партнёров и поставщиков.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор. ObjectId из MongoDB (24 hex символа)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: name
+            description: "Наименование организации"
+            tests:
+              - not_null
+          
+          - name: inn
+            description: "ИНН организации (10 или 12 цифр)"
+          
+          - name: is_our_org
+            description: "Признак нашей организации. TRUE для ООО 'Электрон-Маркет'"
+            tests:
+              - not_null
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 2. СКЛАДЫ
+      # =============================================================================
+      - name: warehouses
+        description: >
+          Справочник складов и пунктов выдачи. Включает основной склад,
+          склады маркетплейсов (Ozon, Wildberries) и пункт выдачи заказов.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор склада (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: name
+            description: "Название склада (Основной склад, Склад Ozon, и т.д.)"
+            tests:
+              - not_null
+          
+          - name: address
+            description: "Физический адрес склада"
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 3. КАТЕГОРИИ ТОВАРОВ
+      # =============================================================================
+      - name: product_categories
+        description: >
+          Иерархический справочник категорий товаров. Поддерживает до 3 уровней вложенности.
+          Корневые категории: Электроника, Компьютеры и комплектующие, Бытовая техника, Аксессуары.
+          Содержит подкатегории: Смартфоны, Ноутбуки, Планшеты, Наушники, Телевизоры и др.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор категории (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: name
+            description: "Название категории"
+            tests:
+              - not_null
+          
+          - name: parent_id
+            description: "Ссылка на родительскую категорию. NULL для корневых категорий"
+            tests:
+              - relationships:
+                  to: ref('stg_product_categories')
+                  field: id
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 4. НОМЕНКЛАТУРА (ТОВАРЫ)
+      # =============================================================================
+      - name: nomenclature
+        description: >
+          Справочник товаров (номенклатура). Содержит 56 позиций реальных моделей
+          электроники и бытовой техники: смартфоны, ноутбуки, планшеты, наушники,
+          умные часы, телевизоры, игровые консоли, мониторы, кухонная техника,
+          климатическая техника, аксессуары.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор товара (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: article
+            description: "Артикул товара (SM-001 для смартфонов, NB-001 для ноутбуков, и т.д.)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: name
+            description: "Полное наименование товара (модель, характеристики)"
+            tests:
+              - not_null
+          
+          - name: category_id
+            description: "Ссылка на категорию товара"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_product_categories')
+                  field: id
+          
+          - name: base_unit
+            description: "Базовая единица измерения (по умолчанию 'шт')"
+          
+          - name: vat_rate
+            description: "Ставка НДС в процентах (по умолчанию 20%)"
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 5. ТИПЫ ЦЕН
+      # =============================================================================
+      - name: price_types
+        description: >
+          Справочник типов цен. Содержит три типа: Закупочная (себестоимость),
+          Розничная (цена для конечного покупателя), Оптовая (цена для оптовых клиентов).
+        columns:
+          - name: id
+            description: "Уникальный идентификатор типа цены (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: name
+            description: "Название типа цены (Закупочная, Розничная, Оптовая)"
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Закупочная', 'Розничная', 'Оптовая']
+          
+          - name: currency
+            description: "Валюта цены (по умолчанию RUB)"
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 6. ЦЕНЫ
+      # =============================================================================
+      - name: prices
+        description: >
+          Цены товаров по типам. Для каждого товара хранятся все три типа цен.
+          Закупочная цена генерируется в зависимости от категории товара.
+          Розничная цена рассчитывается с наценкой. Оптовая — со скидкой от розничной.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор записи цены (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: nomenclature_id
+            description: "Ссылка на товар"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_nomenclature')
+                  field: id
+          
+          - name: price_type_id
+            description: "Ссылка на тип цены"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_price_types')
+                  field: id
+          
+          - name: price
+            description: "Значение цены в рублях"
+            tests:
+              - not_null
+          
+          - name: valid_from
+            description: "Дата начала действия цены (все цены установлены с 2022-01-01)"
+            tests:
+              - not_null
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 7. КОНТРАГЕНТЫ
+      # =============================================================================
+      - name: counterparties
+        description: >
+          Справочник контрагентов. Включает 15 физических лиц (клиентов),
+          4 поставщика и 1 контрагента смешанного типа (ИП "Гаджет Опт").
+          Всего 20 записей.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор контрагента (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: name
+            description: "Наименование контрагента (ФИО или название организации)"
+            tests:
+              - not_null
+          
+          - name: type
+            description: "Тип контрагента: client (клиент), supplier (поставщик), both (смешанный)"
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['client', 'supplier', 'both']
+          
+          - name: phone
+            description: "Контактный телефон"
+          
+          - name: email
+            description: "Адрес электронной почты"
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 8. ЗАКАЗЫ КЛИЕНТОВ
+      # =============================================================================
+      - name: customer_orders
+        description: >
+          Заказы клиентов. Содержат информацию о заказанных товарах в виде JSONB-массива.
+          Каждый заказ связан с организацией, клиентом и складом отгрузки.
+          Данные сгенерированы за период 2022-2024 гг. (~99 000 записей).
+        columns:
+          - name: id
+            description: "Уникальный идентификатор заказа (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: number
+            description: "Номер заказа в формате ЗК-YYMMDD-NNN"
+            tests:
+              - not_null
+          
+          - name: date
+            description: "Дата оформления заказа"
+            tests:
+              - not_null
+          
+          - name: organization_id
+            description: "Ссылка на организацию-продавца"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_organizations')
+                  field: id
+          
+          - name: counterparty_id
+            description: "Ссылка на контрагента (клиента)"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_counterparties')
+                  field: id
+          
+          - name: warehouse_id
+            description: "Ссылка на склад отгрузки"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_warehouses')
+                  field: id
+          
+          - name: status
+            description: "Статус заказа (по умолчанию 'completed')"
+          
+          - name: items
+            description: >
+              JSONB-массив с позициями заказа. Каждый элемент содержит:
+              nomenclature_id, quantity, price, amount.
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 9. ПРОДАЖИ
+      # =============================================================================
+      - name: sales
+        description: >
+          Реализация товаров (продажи). Каждая запись соответствует одной товарной позиции
+          в заказе. Содержит информацию о цене продажи, себестоимости, выручке и марже.
+          Данные за 2022-2024 гг. (~67 000 записей).
+        columns:
+          - name: id
+            description: "Уникальный идентификатор продажи (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: number
+            description: "Номер документа продажи в формате РТ-YYMMDD-NNN"
+            tests:
+              - not_null
+          
+          - name: date
+            description: "Дата продажи"
+            tests:
+              - not_null
+          
+          - name: organization_id
+            description: "Ссылка на организацию-продавца"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_organizations')
+                  field: id
+          
+          - name: counterparty_id
+            description: "Ссылка на контрагента (покупателя)"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_counterparties')
+                  field: id
+          
+          - name: warehouse_id
+            description: "Ссылка на склад, с которого произведена отгрузка"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_warehouses')
+                  field: id
+          
+          - name: order_id
+            description: "Ссылка на заказ клиента, по которому оформлена продажа"
+            tests:
+              - relationships:
+                  to: ref('stg_customer_orders')
+                  field: id
+          
+          - name: items
+            description: >
+              JSONB-массив с проданными позициями. Каждый элемент содержит:
+              nomenclature_id, quantity, price, cost_price, amount, cost_amount.
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 10. ЗАКУПКИ
+      # =============================================================================
+      - name: purchases
+        description: >
+          Закупки товаров у поставщиков. Включают начальное оприходование
+          на 2022-01-01 и ежедневные закупки (2-5 в день). Всего ~3 800 записей.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор закупки (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: number
+            description: "Номер документа закупки в формате ПТ-YYMMDD-NNN"
+            tests:
+              - not_null
+          
+          - name: date
+            description: "Дата закупки"
+            tests:
+              - not_null
+          
+          - name: organization_id
+            description: "Ссылка на организацию-покупателя"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_organizations')
+                  field: id
+          
+          - name: counterparty_id
+            description: "Ссылка на контрагента (поставщика)"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_counterparties')
+                  field: id
+          
+          - name: warehouse_id
+            description: "Ссылка на склад приёмки"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_warehouses')
+                  field: id
+          
+          - name: items
+            description: >
+              JSONB-массив с закупленными позициями. Каждый элемент содержит:
+              nomenclature_id, quantity, price, amount.
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 11. ТРАНСФЕРЫ (ПЕРЕМЕЩЕНИЯ)
+      # =============================================================================
+      - name: transfers
+        description: >
+          Перемещения товаров между складами. Начальные трансферы от 2022-01-02:
+          40 шт. на склад Ozon, 30 шт. на склад Wildberries. Всего 2 записи.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор трансфера (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: number
+            description: "Номер документа перемещения в формате ТР-YYYY-NNN"
+            tests:
+              - not_null
+          
+          - name: date
+            description: "Дата перемещения"
+            tests:
+              - not_null
+          
+          - name: from_warehouse_id
+            description: "Ссылка на склад-отправитель"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_warehouses')
+                  field: id
+          
+          - name: to_warehouse_id
+            description: "Ссылка на склад-получатель"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_warehouses')
+                  field: id
+          
+          - name: items
+            description: >
+              JSONB-массив с перемещёнными позициями. Каждый элемент содержит:
+              nomenclature_id, quantity.
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 12. ОСТАТКИ ТОВАРОВ НА СКЛАДАХ
+      # =============================================================================
+      - name: inventory_balances
+        description: >
+          Регистр остатков товаров на складах. Хранит текущее количество,
+          общую стоимость и среднюю себестоимость. Обновляется при закупках,
+          продажах и трансферах. Содержит ~143 записи (по одной на каждый товар
+          на каждом складе).
+        columns:
+          - name: id
+            description: "Уникальный идентификатор записи остатков (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: warehouse_id
+            description: "Ссылка на склад"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_warehouses')
+                  field: id
+          
+          - name: nomenclature_id
+            description: "Ссылка на товар"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_nomenclature')
+                  field: id
+          
+          - name: quantity
+            description: "Количество товара на складе"
+            tests:
+              - not_null
+          
+          - name: total_cost
+            description: "Общая стоимость остатка (quantity × средняя себестоимость)"
+            tests:
+              - not_null
+          
+          - name: avg_cost
+            description: "Средняя себестоимость единицы товара. 0 если quantity = 0"
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"
+
+      # =============================================================================
+      # 13. ОБОРОТЫ ПРОДАЖ
+      # =============================================================================
+      - name: sales_turnover
+        description: >
+          Регистр оборотов продаж в разрезе товар-склад-дата. Основная таблица
+          для аналитики. Содержит ~67 000 записей за 2022-2024 гг.
+        columns:
+          - name: id
+            description: "Уникальный идентификатор записи оборота (ObjectId из MongoDB)"
+            tests:
+              - unique
+              - not_null
+          
+          - name: date
+            description: "Дата продажи"
+            tests:
+              - not_null
+          
+          - name: nomenclature_id
+            description: "Ссылка на товар"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_nomenclature')
+                  field: id
+          
+          - name: warehouse_id
+            description: "Ссылка на склад продажи"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_warehouses')
+                  field: id
+          
+          - name: quantity
+            description: "Количество проданного товара"
+            tests:
+              - not_null
+          
+          - name: revenue
+            description: "Выручка от продажи (quantity × price с учётом скидки)"
+            tests:
+              - not_null
+          
+          - name: cost_total
+            description: "Общая себестоимость проданного товара (quantity × avg_cost)"
+            tests:
+              - not_null
+          
+          - name: update_ts
+            description: "Временная метка последнего обновления записи (UTC)"

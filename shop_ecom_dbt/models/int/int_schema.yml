@@ -1,0 +1,210 @@
+version: 2
+
+models:
+  # =============================================================================
+  # 1. ЗАКАЗЫ КЛИЕНТОВ
+  # =============================================================================
+  - name: int_customer_orders
+    description: >
+      Промежуточное представление заказов клиентов в разрезе строк (позиций).
+      Разворачивает JSONB-массив items в отдельные строки через
+      json_array_elements. Одна запись staging = одна товарная позиция заказа.
+      Данные за 2022–2024 гг. (~99 000 строк на уровне позиций).
+    columns:
+      - name: order_id
+        description: "Идентификатор заказа (ObjectId из MongoDB)"
+        tests:
+          - not_null
+
+      - name: order_number
+        description: "Номер заказа в формате ЗК-YYMMDD-NNN"
+        tests:
+          - not_null
+
+      - name: order_date
+        description: "Дата оформления заказа"
+        tests:
+          - not_null
+
+      - name: organization_id
+        description: "Ссылка на организацию-продавца"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_organizations')
+              field: organization_id
+
+      - name: counterparty_id
+        description: "Ссылка на контрагента (клиента)"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_counterparties')
+              field: counterparty_id
+
+      - name: warehouse_id
+        description: "Ссылка на склад отгрузки"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_warehouses')
+              field: warehouse_id
+
+      - name: status
+        description: "Статус заказа (по умолчанию 'completed')"
+
+      - name: price
+        description: "Цена единицы товара в позиции заказа (из JSON items)"
+
+      - name: amount
+        description: "Сумма по позиции заказа (из JSON items)"
+
+      - name: quantity
+        description: "Количество товара в позиции заказа (из JSON items)"
+
+      - name: nomenclature_id
+        description: "Ссылка на товар в позиции заказа (из JSON items)"
+        tests:
+          - relationships:
+              to: ref('dim_nomenclature')
+              field: nomenclature_id
+
+  # =============================================================================
+  # 2. ПРОДАЖИ
+  # =============================================================================
+  - name: int_sales
+    description: >
+      Промежуточное представление продаж в разрезе строк (позиций).
+      Разворачивает JSONB-массив items в отдельные строки через
+      jsonb_array_elements. Содержит цену продажи, количество, сумму,
+      себестоимость и ссылку на заказ клиента. Данные за 2022–2024 гг.
+    columns:
+      - name: sale_id
+        description: "Идентификатор документа продажи (ObjectId из MongoDB)"
+        tests:
+          - not_null
+
+      - name: sale_number
+        description: "Номер документа продажи в формате РТ-YYMMDD-NNN"
+        tests:
+          - not_null
+
+      - name: sale_date
+        description: "Дата продажи"
+        tests:
+          - not_null
+
+      - name: organization_id
+        description: "Ссылка на организацию-продавца"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_organizations')
+              field: organization_id
+
+      - name: counterparty_id
+        description: "Ссылка на контрагента (покупателя)"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_counterparties')
+              field: counterparty_id
+
+      - name: warehouse_id
+        description: "Ссылка на склад, с которого произведена отгрузка"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_warehouses')
+              field: warehouse_id
+
+      - name: order_id
+        description: "Ссылка на заказ клиента, по которому оформлена продажа"
+        tests:
+          - relationships:
+              to: source('staging_shop_ecom', 'customer_orders')
+              field: id
+
+      - name: sale_price
+        description: "Цена продажи единицы товара (из JSON items)"
+
+      - name: sale_quantity
+        description: "Количество проданного товара (из JSON items)"
+
+      - name: sale_amount
+        description: "Сумма продажи по позиции (из JSON items)"
+
+      - name: cost_price
+        description: "Себестоимость единицы товара (из JSON items)"
+
+      - name: nomenclature_id
+        description: "Ссылка на товар в позиции продажи (из JSON items)"
+        tests:
+          - relationships:
+              to: ref('dim_nomenclature')
+              field: nomenclature_id
+
+  # =============================================================================
+  # 3. ЗАКУПКИ
+  # =============================================================================
+  - name: int_purchases
+    description: >
+      Промежуточное представление закупок в разрезе строк (позиций).
+      Разворачивает JSONB-массив items в отдельные строки через
+      json_array_elements. Включает начальное оприходование на 2022-01-01
+      и ежедневные закупки (~3 800 документов на уровне заголовков).
+    columns:
+      - name: purchase_id
+        description: "Идентификатор документа закупки (ObjectId из MongoDB)"
+        tests:
+          - not_null
+
+      - name: purchase_number
+        description: "Номер документа закупки в формате ПТ-YYMMDD-NNN"
+        tests:
+          - not_null
+
+      - name: purchase_date
+        description: "Дата закупки"
+        tests:
+          - not_null
+
+      - name: organization_id
+        description: "Ссылка на организацию-покупателя"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_organizations')
+              field: organization_id
+
+      - name: counterparty_id
+        description: "Ссылка на контрагента (поставщика)"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_counterparties')
+              field: counterparty_id
+
+      - name: warehouse_id
+        description: "Ссылка на склад приёмки"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_warehouses')
+              field: warehouse_id
+
+      - name: price
+        description: "Закупочная цена единицы товара (из JSON items)"
+
+      - name: amount
+        description: "Сумма по позиции закупки (из JSON items)"
+
+      - name: quantity
+        description: "Количество закупленного товара (из JSON items)"
+
+      - name: nomenclature_id
+        description: "Ссылка на товар в позиции закупки (из JSON items)"
+        tests:
+          - relationships:
+              to: ref('dim_nomenclature')
+              field: nomenclature_id
