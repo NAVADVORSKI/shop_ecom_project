@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='append',
+        unique_key='purchase_id'
+    )
+}}
+
 with purchases as (
 
     select 
@@ -23,3 +31,13 @@ with purchases as (
 
 select *
 from purchases
+{% if is_incremental() %}
+    where purchase_date > (
+        select
+            coalesce(
+                max(purchase_date),
+                '1900-01-01'
+            )
+        from {{ this }}
+    )
+{% endif %}

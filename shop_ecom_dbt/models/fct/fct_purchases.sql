@@ -2,20 +2,24 @@
     config(
         materialized='incremental',
         unique_key='purchase_number',
-        incremental_strategy='append'
+        incremental_strategy='append',
+		post_hook=[
+        "ALTER TABLE {{ this }} ALTER COLUMN price TYPE FLOAT USING price::FLOAT;",
+        "ALTER TABLE {{ this }} ALTER COLUMN amount TYPE FLOAT USING amount::FLOAT;"
+    ]
     )
 }}
 
 select 
 	purchase_number  ,
-	purchase_date ,
+	purchase_date,
 	organization_name ,
 	counterparty_name ,
 	counterparty_type,
 	warehouse_name ,
-	price,
-	amount ,
-	quantity ,
+	price::float,
+	amount::float,
+	quantity::int,
 	base_unit,
 	nomenclature_name,
 	parent_category_name ,
@@ -25,3 +29,17 @@ left join {{ ref('dim_counterparties') }} as dim_counterparties on dim_counterpa
 left join {{ ref('dim_nomenclature') }} as dim_nomenclature on int_purchases.nomenclature_id = dim_nomenclature.nomenclature_id 
 left join {{ ref('dim_organizations') }} as dim_organizations on dim_organizations.organization_id = int_purchases.organization_id 
 left join {{ ref('dim_warehouses') }} as dim_warehouses on int_purchases.warehouse_id = dim_warehouses.warehouse_id 
+{% if is_incremental() %}
+	where purchase_date > (
+		select
+			coalesce(
+				max(
+					purchase_date
+				),
+				'1900-01-01'
+			)
+		from {{
+			this
+		}}
+	)
+{% endif %}

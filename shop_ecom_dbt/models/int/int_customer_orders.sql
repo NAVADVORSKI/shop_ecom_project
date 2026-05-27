@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='append',
+        unique_key='order_id'
+    )
+}}
+
 with customer_orders as (
     select 
         id as order_id,
@@ -22,3 +30,13 @@ with customer_orders as (
 
 select *
 from customer_orders
+{% if is_incremental() %}
+    where order_date > (
+        select
+            coalesce(
+                max(order_date),
+                '1900-01-01'
+            )
+        from {{ this }}
+    )
+{% endif %}

@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='append',
+        unique_key='sale_id'
+    )
+}}
+
 with sales as (
 
     select 
@@ -25,3 +33,13 @@ with sales as (
 
 select *
 from sales
+{% if is_incremental() %}
+    where sale_date > (
+        select
+            coalesce(
+                max(sale_date),
+                '1900-01-01'
+            )
+        from {{ this }}
+    )
+{% endif %}

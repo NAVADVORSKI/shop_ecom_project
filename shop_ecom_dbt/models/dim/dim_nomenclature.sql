@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key='nomenclature_id'
+    )
+}}
+
 with nomenclature as (
     select
         id as nomenclature_id,

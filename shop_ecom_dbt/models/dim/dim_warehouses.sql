@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key='warehouse_id'
+    )
+}}
+
 with warehouses as (
 
     select

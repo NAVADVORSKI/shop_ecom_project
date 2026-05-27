@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key='counterparty_id'
+    )
+}}
+
 with counterparties as (
 
     select

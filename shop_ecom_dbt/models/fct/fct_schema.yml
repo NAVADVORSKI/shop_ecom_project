@@ -14,60 +14,75 @@ models:
     columns:
       - name: order_number
         description: "Номер заказа в формате ЗК-YYMMDD-NNN"
+        data_type: text
         tests:
           - not_null
 
       - name: order_date
         description: "Дата оформления заказа"
+        data_type: date
         tests:
           - not_null
 
       - name: organization_name
         description: "Наименование организации-продавца"
+        data_type: text
         tests:
           - not_null
 
       - name: counterparty_name
         description: "Наименование контрагента (клиента)"
+        data_type: text
         tests:
           - not_null
 
       - name: counterparty_type
         description: "Тип контрагента: client (клиент), supplier (поставщик), both (смешанный)"
+        data_type: text
         tests:
           - accepted_values:
               values: ['client', 'supplier', 'both']
 
       - name: warehouse_name
         description: "Название склада отгрузки"
+        data_type: text
         tests:
           - not_null
 
       - name: status
         description: "Статус заказа (по умолчанию 'completed')"
+        data_type: text
 
       - name: price
         description: "Цена единицы товара в позиции заказа"
+        data_type: float
 
       - name: amount
         description: "Сумма по позиции заказа"
+        data_type: integer
 
       - name: quantity
         description: "Количество товара в позиции заказа"
+        data_type: integer
 
       - name: base_unit
         description: "Базовая единица измерения товара (по умолчанию 'шт')"
+        data_type: integer
 
       - name: email_address
         description: "Доменная часть email-адреса контрагента (после символа @)"
+        data_type: text
 
       - name: nomenclature_name
+        data_type: text
         description: "Полное наименование товара в позиции заказа"
 
       - name: parent_category_name
+        data_type: text
         description: "Название родительской (корневой) категории товара"
 
       - name: sub_category_name
+        data_type: text
         description: "Название подкатегории товара"
 
   # =============================================================================
